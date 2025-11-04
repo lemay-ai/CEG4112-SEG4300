@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 import pandas as pd
+import seaborn as sns
 
 # Generate double ring dataset
 np.random.seed(0)
