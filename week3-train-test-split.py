@@ -1,4 +1,5 @@
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 # Sample data (replace with your actual data)
 X = np.random.rand(100, 10)  # 100 samples, 10 features

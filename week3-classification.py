@@ -4,6 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 import pandas as pd
 import seaborn as sns
+from sklearn.model_selection import train_test_split
 
 # Sample data (replace with your actual data)
 np.random.seed(42)  # for reproducibility
