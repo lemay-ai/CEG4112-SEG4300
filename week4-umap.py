@@ -20,6 +20,7 @@ def create_synthetic_dataset():
         random_state=42
     )
     fake = Faker()
+    fake.seed_instance(42)
     
     feature_names = [f"Visit Frequency: {fake.company()}" for i in range(X.shape[1])]
     input_scaler = MinMaxScaler()
