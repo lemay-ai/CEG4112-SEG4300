@@ -20,11 +20,12 @@ def create_synthetic_dataset():
         random_state=42
     )
     fake = Faker()
+    fake.seed_instance(42)
     
     feature_names = [f"Visit Frequency: {fake.company()}" for i in range(X.shape[1])]
     input_scaler = MinMaxScaler()
 
-    return pd.DataFrame(np.abs(input_scaler.fit_transform(X)), columns=feature_names), pd.Series(y, name="Activity_Label")
+    return pd.DataFrame(np.abs(input_scaler.fit_transform(X)), columns=feature_names), pd.Series(y, name="Class_Label")
 
 # Step 2: Preprocess Data
 def preprocess_data(X):
@@ -49,8 +50,8 @@ def visualize_umap(embedding, labels):
         s=10, 
         alpha=0.7
     )
-    plt.colorbar(scatter, label="Activity Label")
-    plt.title("UMAP Embedding of Human Activity Data")
+    plt.colorbar(scatter, label="Class Label")
+    plt.title("UMAP Embedding of Synthetic Multi-Class Data")
     plt.xlabel("UMAP Dimension 1")
     plt.ylabel("UMAP Dimension 2")
     plt.grid(True, alpha=0.3)
@@ -69,5 +70,5 @@ umap_embedding = apply_umap(X_scaled)
 visualize_umap(umap_embedding, y)
 
 # Step 5: Visualize the raw data
-X["Activity_Label"] = y
+X["Class_Label"] = y
 X.head()
